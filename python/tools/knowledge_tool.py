@@ -3,6 +3,9 @@ from agent import Agent
 from . import online_knowledge_tool
 from python.helpers import perplexity_search
 from python.helpers import duckduckgo_search
+from dotenv import dotenv_values
+# Load the .env file
+env_vars = dotenv_values(".env")
 
 from . import memory_tool
 import concurrent.futures
@@ -18,7 +21,7 @@ class Knowledge(Tool):
             # Schedule the two functions to be run in parallel
 
             # perplexity search, if API provided
-            if os.getenv("API_KEY_PERPLEXITY"):
+            if env_vars.get("API_KEY_PERPLEXITY"):
                 perplexity = executor.submit(perplexity_search.perplexity_search, question)
             else: perplexity = None
 

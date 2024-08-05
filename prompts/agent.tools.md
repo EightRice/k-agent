@@ -41,6 +41,24 @@ Give him detailed instructions as well as good overview to understand what to do
 }
 ~~~
 
+### contract_interaction:
+Use this to interact with the deployed Tezos DAO contract.
+Only specify the "proposal_metadata" argument, as "from" and "frozen_token_amount" are already hardcoded. 
+If the call was successful, this function will return "Operation submitted." If not, it will return the error so you may adjust how you structure the "proposal_metadata" argument. 
+**Example usage**:
+~~~json
+{
+    "thoughts": [
+        "I have another viable iteration of proposal_metadata...",
+        "I will call the contract...",
+    ],
+    "tool_name": "contract_interaction",
+    "tool_args": {
+        "proposal_metadata": "7b2268616e646c65725f6e616d65223a20226865...",
+    }
+}
+~~~
+
 ### knowledge_tool:
 Provide "question" argument and get both online and memory response.
 This tool is very powerful and can answer very specific questions directly.

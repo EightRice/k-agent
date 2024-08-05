@@ -9,13 +9,16 @@ from openai import OpenAI
 import os
 
 
-api_key_from_env = os.getenv("API_KEY_PERPLEXITY")
+from dotenv import dotenv_values
+# Load the .env file
 
 class PerplexityCrewLLM(BaseLLM):
     api_key: str
     model_name: str
 
     def call_perplexity_ai(self, prompt: str) -> LLMResult:
+        
+
         url = "https://api.perplexity.ai/chat/completions"
 
         payload = {
@@ -61,9 +64,11 @@ class PerplexityCrewLLM(BaseLLM):
     def _llm_type(self) -> str:
         return "PerplexityAI"
     
-
-def PerplexitySearchLLM(api_key,model_name="sonar-medium-online",base_url="https://api.perplexity.ai"):    
-    client = OpenAI(api_key=api_key_from_env, base_url=base_url)
+def PerplexitySearchLLM(model_name="sonar-medium-online",base_url="https://api.perplexity.ai"):    
+    env_vars = dotenv_values(".env")
+    key= env_vars.get("API_KEY_OPENAI")
+    
+    client = OpenAI(api_key=key, base_url=base_url)
         
     def call_model(query:str):
         messages = [
@@ -94,7 +99,7 @@ def PerplexitySearchLLM(api_key,model_name="sonar-medium-online",base_url="https
     return call_model
 
 
-call_llm = PerplexitySearchLLM(api_key=api_key_from_env,model_name="llama-3-sonar-large-32k-online")
+call_llm = PerplexitySearchLLM(model_name="llama-3-sonar-large-32k-online")
 
 def perplexity_search(search_query: str):
     return call_llm(search_query)

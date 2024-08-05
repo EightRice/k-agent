@@ -6,14 +6,15 @@ from langchain_anthropic import ChatAnthropic
 from langchain_groq import ChatGroq
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_google_genai import ChatGoogleGenerativeAI, HarmBlockThreshold, HarmCategory
-
+from dotenv import dotenv_values
 
 # Load environment variables
 load_dotenv()
+env_vars = dotenv_values(".env")
 
 # Configuration
 DEFAULT_TEMPERATURE = 0.0
-openai_key=os.getenv("openai")
+openai_key=env_vars.get("API_KEY_OPENAI")
 # Utility function to get API keys from environment variables
 def get_api_key(service):
     return os.getenv(service)
@@ -37,7 +38,7 @@ def get_anthropic_opus(api_key=None, temperature=DEFAULT_TEMPERATURE):
     return ChatAnthropic(model_name="claude-3-opus-20240229", temperature=temperature, api_key=api_key) # type: ignore
 
 def get_openai_gpt35(api_key=None, temperature=DEFAULT_TEMPERATURE):
-    api_key = api_key or get_api_key("openai")
+    api_key = api_key
     return ChatOpenAI(model_name="gpt-3.5-turbo", temperature=temperature, api_key=api_key) # type: ignore
 
 def get_openai_chat(api_key=None, model="gpt-4o-mini", temperature=DEFAULT_TEMPERATURE):
@@ -54,7 +55,7 @@ def get_openai_gpt4(api_key=None, temperature=DEFAULT_TEMPERATURE):
     return ChatOpenAI(model_name="gpt-4-0125-preview", temperature=temperature, api_key=api_key) # type: ignore
 
 def get_openai_gpt4o(api_key=None, temperature=DEFAULT_TEMPERATURE):
-    api_key = api_key or get_api_key("openai")
+    api_key = openai_key
     return ChatOpenAI(model_name="gpt-4o", temperature=temperature, api_key=api_key) # type: ignore
 
 def get_groq_mixtral7b(api_key=None, temperature=DEFAULT_TEMPERATURE):

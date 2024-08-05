@@ -70,6 +70,8 @@ class CodeExecution(Tool):
         escaped_code = shlex.quote(code)
         command = f'python3 -c {escaped_code}'
         return self.terminal_session(command)
+    
+    
 
     def execute_nodejs_code(self, code):
         escaped_code = shlex.quote(code)
