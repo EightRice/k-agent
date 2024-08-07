@@ -40,8 +40,6 @@ def hello():
     contract_address = "KT1VG3ynsnyxFGzw9mdBwYnyZAF8HZvqnNkw"
     # # Load the contract
     contract = pytezos.contract(contract_address)
-    if proposal_metadata in already_tried:
-        return jsonify({"BLOCKED BY SCRIPT": "This bytes sequence has already been tried and it didn't work."})
     # print("last metadata "+str(last_metadata))
     # print("curr metadata "+str (proposal_metadata))
     last_metadata=proposal_metadata
@@ -50,7 +48,7 @@ def hello():
     mers=False
     something=None
     try:
-        result = contract.propose(public_key, 10000, bytes(proposal_metadata, "utf-8")).send(min_confirmations=1)
+        result = contract.propose(public_key, 10000, proposal_metadata).send(min_confirmations=1)
         mers=True
     except Exception as e:
         print("exception: ",e)
@@ -69,4 +67,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0',debug=True)

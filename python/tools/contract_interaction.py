@@ -1,4 +1,3 @@
-from pytezos import pytezos
 import json
 import binascii
 import requests
@@ -23,9 +22,3 @@ class ContractInteraction(Tool):
         response = requests.get(f"{BASE_URL}/hello", params={"metadata":proposal_metadata})
         content = json.loads(response.content)
         return Response(message=str(content), break_loop=False)
-       
-           
-       
-
-
-       

@@ -68,7 +68,7 @@ def PerplexitySearchLLM(model_name="sonar-medium-online",base_url="https://api.p
     env_vars = dotenv_values(".env")
     key= env_vars.get("API_KEY_OPENAI")
     
-    client = OpenAI(api_key=key, base_url=base_url)
+    client = OpenAI(api_key="replace", base_url=base_url)
         
     def call_model(query:str):
         messages = [
