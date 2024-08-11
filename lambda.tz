@@ -1,0 +1,9 @@
+parameter unit;
+storage string;
+code {
+  CAR; 
+  PUSH string "{ \"add_handler\": { \"name\": \"my_handler_name\", \"code\": { \"prim\": \"lambda\", \"args\": [ { \"prim\": \"pair\", \"args\": [ { \"prim\": \"bytes\" }, { \"prim\": \"pair\", \"args\": [ { \"prim\": \"big_map\", \"args\": [ { \"prim\": \"string\" }, { \"prim\": \"bytes\" } ] }, { \"prim\": \"pair\", \"args\": [ { \"prim\": \"address\" }, { \"prim\": \"pair\", \"args\": [ { \"prim\": \"nat\" }, { \"prim\": \"bytes\" } ] } ] } ] } ] }, { \"prim\": \"pair\", \"args\": [ { \"prim\": \"list\", \"args\": [ { \"prim\": \"operation\" } ] }, { \"prim\": \"pair\", \"args\": [ { \"prim\": \"big_map\", \"args\": [ { \"prim\": \"string\" }, { \"prim\": \"bytes\" } ] }, { \"prim\": \"option\", \"args\": [ { \"prim\": \"address\" } ] } ] } ] } ] }, \"handler_check\": { \"prim\": \"lambda\", \"args\": [ { \"prim\": \"pair\", \"args\": [ { \"prim\": \"bytes\" }, { \"prim\": \"big_map\", \"args\": [ { \"prim\": \"string\" }, { \"prim\": \"bytes\" } ] } ] }, { \"prim\": \"unit\" } ] } } } }";
+  PACK;
+  NIL operation; 
+  PAIR
+};

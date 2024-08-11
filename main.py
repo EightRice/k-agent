@@ -36,6 +36,7 @@ def initialize():
 
     # utility model used for helper functions (cheaper, faster)
     utility_llm = models.get_openai_chat(temperature=0)
+    # utility_llm = models.get_ollama(model_name="llama3:8b-text-fp16")
     
     # embedding model used for memory
     embedding_llm = models.get_embedding_openai()

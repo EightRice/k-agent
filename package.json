@@ -1,0 +1,7 @@
+{
+  "type": "module",
+  "dependencies": {
+    "@taquito/michel-codec": "^20.0.1",
+    "taquito": "^1.0.0"
+  }
+}

@@ -1,6 +1,7 @@
 import os
 from dotenv import load_dotenv
 from langchain_community.llms import Ollama
+from langchain_community.llms.ollama import Ollama
 from langchain_openai import ChatOpenAI, OpenAI, OpenAIEmbeddings
 from langchain_anthropic import ChatAnthropic
 from langchain_groq import ChatGroq

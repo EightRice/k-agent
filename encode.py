@@ -32,12 +32,12 @@ contract = pytezos.contract(contract_address)
 
 import json
 import binascii
-lambda_code='''(lambda %new_handler (unit) : unit
-  {
-    DROP;
-    NIL operation;
-    PAIR;
-  })'''
+lambda_code=wrapped_data='''
+Pair "tz2QkZn4ERS7sDd3xBKoyjRcPTP76e7WLHd2"
+      (Pair 10000
+            0x050505050807070100000016636f6e66696775726174696f6e5f70726f706f73616c0a00000017050707070707070509000003060707030603060509000a)
+'''
+
 # Example Michelson code
 michelson_code = lambda_code
 
