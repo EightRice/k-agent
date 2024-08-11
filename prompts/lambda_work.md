@@ -1,5 +1,5 @@
 Here is the definition of a add_handler, which is a data structure in a Tezos smart contract: 
-
+```
 (pair %add_handler
   (pair (lambda %code
            (pair (pair (map %handler_storage string bytes) (bytes %packed_argument))
@@ -11,12 +11,12 @@ Here is the definition of a add_handler, which is a data structure in a Tezos sm
                  (list %operations operation)))
         (lambda %handler_check (pair bytes (map string bytes)) unit))
   (string %name))
-
+```
 for full context, the data structure is defined here: https://github.com/tezos-commons/baseDAO/blob/be77424a313ace8e3f3c2748a1cbbc18acfe8001/src/variants/lambda/types.mligo#L63
 
 You will need to interate upon the logic below to produce a hex string pertaining to this data structure. This will be an actual implementation, without any placeholders. DO NOT change the address (the 'from' parameter) or the value of 'frozen_token_amount' which is 10000. When you have a viable new hex string to try, use the contract_interaction tool. Know that the tool will relay the error from the RPC code if the call wasn't successfull, which is your cue to continue iterating. (code 111 means failure to unpack metadata). You should submit your iteration every time to the contract_interaction tool as a hex string. 
 Here is your starting point:
-
+```
 import json
 
 def create_add_handler_proposal(handler_name, code, handler_check):
@@ -126,3 +126,4 @@ proposal = create_add_handler_proposal(handler_name, handler_code, handler_check
 call_data = create_propose_call_data("tz1T5kk65F9oZw2z1YV4osfcrX7eD5KtLj3c", 10000, proposal)
 
 print(bytes(str(call_data),"utf-8").hex())
+```
